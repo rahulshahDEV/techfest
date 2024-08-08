@@ -41,6 +41,11 @@ class _BlogeditorState extends State<Blogeditor> {
   }
 
   void getDataIfExist() {
+    if (widget.imgUrl != null) {
+      // context.read<MainProvider>().setImagePreview(image: null);
+      Provider.of<MainProvider>(context, listen: false)
+          .setImagePreview(image: null);
+    }
     if (widget.slug != null) {
       Provider.of<MainProvider>(context, listen: false).setLoadingEditor(true);
 
@@ -73,6 +78,7 @@ class _BlogeditorState extends State<Blogeditor> {
   @override
   Widget build(BuildContext context) {
     final File? imageFile = context.watch<MainProvider>().imagePreviewPath;
+
     return Scaffold(
       // backgroundColor: Palette.primary,
       appBar: const MyAppBar(title: 'Editor'),

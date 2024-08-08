@@ -179,6 +179,17 @@ class _UserDetailedState extends State<UserDetailed> {
               ],
             ),
           ),
+        ),
+        Positioned(
+          top: 20,
+          child: IconButton(
+              onPressed: () {
+                context.router.maybePop();
+              },
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              )),
         )
       ]),
     );

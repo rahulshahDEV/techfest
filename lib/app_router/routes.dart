@@ -25,6 +25,10 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: EventPageRoute.page, path: '/event'),
         AutoRoute(page: UserDetailedRoute.page, path: '/deatiledView'),
         AutoRoute(
+          page: BlogDetailRoute.page,
+          path: '/blogdetail',
+        ),
+        AutoRoute(
           page: BlogeditorRoute.page,
           path: '/editor',
         )
