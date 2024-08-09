@@ -27,10 +27,13 @@ class Controller {
 
   static Future<void> deleteToken(BuildContext context) async {
     try {
-      await storage.delete(key: 'jwt_token');
-      AutoRouter.of(context).pushNamed('/');
+      await storage.delete(key: 'jwt_token').then(
+        (value) {
+          AutoRouter.of(context).pushNamed('/');
+        },
+      );
     } catch (e) {
-      print(e);
+      context.showSnackBar(e.toString());
     }
   }
 

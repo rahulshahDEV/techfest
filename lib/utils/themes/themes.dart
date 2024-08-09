@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 ThemeData lightMode = ThemeData(
     useMaterial3: true,
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: Palette.secondary_green,
+        backgroundColor: Palette.primary,
         foregroundColor: Palette.territory_white),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: Palette.territory_white),

@@ -8,29 +8,31 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i13;
+import 'package:auto_route/auto_route.dart' as _i15;
 import 'package:byrahul/pages/Blog.dart' as _i2;
 import 'package:byrahul/pages/blog_detail.dart' as _i1;
 import 'package:byrahul/pages/blogeditor.dart' as _i3;
 import 'package:byrahul/pages/choose_route.dart' as _i4;
 import 'package:byrahul/pages/customEditor.dart' as _i5;
 import 'package:byrahul/pages/dashboard_page.dart' as _i6;
-import 'package:byrahul/pages/event_page.dart' as _i7;
-import 'package:byrahul/pages/homescreen.dart' as _i8;
-import 'package:byrahul/pages/speaker.dart' as _i9;
-import 'package:byrahul/pages/userview/user_detailed.dart' as _i10;
-import 'package:byrahul/pages/userview/user_homepage.dart' as _i11;
-import 'package:byrahul/pages/wrapper.dart' as _i12;
-import 'package:flutter/material.dart' as _i14;
+import 'package:byrahul/pages/event_detail.dart' as _i7;
+import 'package:byrahul/pages/event_page.dart' as _i8;
+import 'package:byrahul/pages/homescreen.dart' as _i9;
+import 'package:byrahul/pages/speaker.dart' as _i11;
+import 'package:byrahul/pages/speaker_detail.dart' as _i10;
+import 'package:byrahul/pages/userview/user_detailed.dart' as _i12;
+import 'package:byrahul/pages/userview/user_homepage.dart' as _i13;
+import 'package:byrahul/pages/wrapper.dart' as _i14;
+import 'package:flutter/material.dart' as _i16;
 
-abstract class $AppRouter extends _i13.RootStackRouter {
+abstract class $AppRouter extends _i15.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i13.PageFactory> pagesMap = {
+  final Map<String, _i15.PageFactory> pagesMap = {
     BlogDetailRoute.name: (routeData) {
       final args = routeData.argsAs<BlogDetailRouteArgs>();
-      return _i13.AutoRoutePage<dynamic>(
+      return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i1.BlogDetail(
           key: args.key,
@@ -40,7 +42,7 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       );
     },
     BlogPageRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i2.BlogPage(),
       );
@@ -48,7 +50,7 @@ abstract class $AppRouter extends _i13.RootStackRouter {
     BlogeditorRoute.name: (routeData) {
       final args = routeData.argsAs<BlogeditorRouteArgs>(
           orElse: () => const BlogeditorRouteArgs());
-      return _i13.AutoRoutePage<dynamic>(
+      return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i3.Blogeditor(
           key: args.key,
@@ -59,14 +61,14 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       );
     },
     ChooseRouteRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i4.ChooseRoute(),
       );
     },
     CustomEditorPageRoute.name: (routeData) {
       final args = routeData.argsAs<CustomEditorPageRouteArgs>();
-      return _i13.AutoRoutePage<dynamic>(
+      return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i5.CustomEditorPage(
           key: args.key,
@@ -79,37 +81,59 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       );
     },
     DashboardPageRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i6.DashboardPage(),
       );
     },
-    EventPageRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+    EventDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<EventDetailRouteArgs>(
+          orElse: () => const EventDetailRouteArgs());
+      return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i7.EventPage(),
+        child: _i7.EventDetail(
+          key: args.key,
+          id: args.id,
+        ),
+      );
+    },
+    EventPageRoute.name: (routeData) {
+      return _i15.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i8.EventPage(),
       );
     },
     HomeScreenRoute.name: (routeData) {
       final args = routeData.argsAs<HomeScreenRouteArgs>(
           orElse: () => const HomeScreenRouteArgs());
-      return _i13.AutoRoutePage<dynamic>(
+      return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i8.HomeScreen(key: args.key),
+        child: _i9.HomeScreen(key: args.key),
+      );
+    },
+    SpeakerDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<SpeakerDetailRouteArgs>(
+          orElse: () => const SpeakerDetailRouteArgs());
+      return _i15.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i10.SpeakerDetail(
+          key: args.key,
+          id: args.id,
+        ),
       );
     },
     SpeakerPageRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i9.SpeakerPage(),
+        child: const _i11.SpeakerPage(),
       );
     },
     UserDetailedRoute.name: (routeData) {
       final args = routeData.argsAs<UserDetailedRouteArgs>(
           orElse: () => const UserDetailedRouteArgs());
-      return _i13.AutoRoutePage<dynamic>(
+      return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.UserDetailed(
+        child: _i12.UserDetailed(
           key: args.key,
           id: args.id,
           count: args.count,
@@ -132,15 +156,15 @@ abstract class $AppRouter extends _i13.RootStackRouter {
     UserHomepageRoute.name: (routeData) {
       final args = routeData.argsAs<UserHomepageRouteArgs>(
           orElse: () => const UserHomepageRouteArgs());
-      return _i13.AutoRoutePage<dynamic>(
+      return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i11.UserHomepage(key: args.key),
+        child: _i13.UserHomepage(key: args.key),
       );
     },
     WrapperRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i12.Wrapper(),
+        child: const _i14.Wrapper(),
       );
     },
   };
@@ -148,12 +172,12 @@ abstract class $AppRouter extends _i13.RootStackRouter {
 
 /// generated route for
 /// [_i1.BlogDetail]
-class BlogDetailRoute extends _i13.PageRouteInfo<BlogDetailRouteArgs> {
+class BlogDetailRoute extends _i15.PageRouteInfo<BlogDetailRouteArgs> {
   BlogDetailRoute({
-    _i14.Key? key,
+    _i16.Key? key,
     required String slug,
     required String imagepath,
-    List<_i13.PageRouteInfo>? children,
+    List<_i15.PageRouteInfo>? children,
   }) : super(
           BlogDetailRoute.name,
           args: BlogDetailRouteArgs(
@@ -166,8 +190,8 @@ class BlogDetailRoute extends _i13.PageRouteInfo<BlogDetailRouteArgs> {
 
   static const String name = 'BlogDetailRoute';
 
-  static const _i13.PageInfo<BlogDetailRouteArgs> page =
-      _i13.PageInfo<BlogDetailRouteArgs>(name);
+  static const _i15.PageInfo<BlogDetailRouteArgs> page =
+      _i15.PageInfo<BlogDetailRouteArgs>(name);
 }
 
 class BlogDetailRouteArgs {
@@ -177,7 +201,7 @@ class BlogDetailRouteArgs {
     required this.imagepath,
   });
 
-  final _i14.Key? key;
+  final _i16.Key? key;
 
   final String slug;
 
@@ -191,8 +215,8 @@ class BlogDetailRouteArgs {
 
 /// generated route for
 /// [_i2.BlogPage]
-class BlogPageRoute extends _i13.PageRouteInfo<void> {
-  const BlogPageRoute({List<_i13.PageRouteInfo>? children})
+class BlogPageRoute extends _i15.PageRouteInfo<void> {
+  const BlogPageRoute({List<_i15.PageRouteInfo>? children})
       : super(
           BlogPageRoute.name,
           initialChildren: children,
@@ -200,18 +224,18 @@ class BlogPageRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'BlogPageRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i15.PageInfo<void> page = _i15.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i3.Blogeditor]
-class BlogeditorRoute extends _i13.PageRouteInfo<BlogeditorRouteArgs> {
+class BlogeditorRoute extends _i15.PageRouteInfo<BlogeditorRouteArgs> {
   BlogeditorRoute({
-    _i14.Key? key,
+    _i16.Key? key,
     String? slug,
     String? imgUrl,
     String? id,
-    List<_i13.PageRouteInfo>? children,
+    List<_i15.PageRouteInfo>? children,
   }) : super(
           BlogeditorRoute.name,
           args: BlogeditorRouteArgs(
@@ -225,8 +249,8 @@ class BlogeditorRoute extends _i13.PageRouteInfo<BlogeditorRouteArgs> {
 
   static const String name = 'BlogeditorRoute';
 
-  static const _i13.PageInfo<BlogeditorRouteArgs> page =
-      _i13.PageInfo<BlogeditorRouteArgs>(name);
+  static const _i15.PageInfo<BlogeditorRouteArgs> page =
+      _i15.PageInfo<BlogeditorRouteArgs>(name);
 }
 
 class BlogeditorRouteArgs {
@@ -237,7 +261,7 @@ class BlogeditorRouteArgs {
     this.id,
   });
 
-  final _i14.Key? key;
+  final _i16.Key? key;
 
   final String? slug;
 
@@ -253,8 +277,8 @@ class BlogeditorRouteArgs {
 
 /// generated route for
 /// [_i4.ChooseRoute]
-class ChooseRouteRoute extends _i13.PageRouteInfo<void> {
-  const ChooseRouteRoute({List<_i13.PageRouteInfo>? children})
+class ChooseRouteRoute extends _i15.PageRouteInfo<void> {
+  const ChooseRouteRoute({List<_i15.PageRouteInfo>? children})
       : super(
           ChooseRouteRoute.name,
           initialChildren: children,
@@ -262,21 +286,21 @@ class ChooseRouteRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'ChooseRouteRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i15.PageInfo<void> page = _i15.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i5.CustomEditorPage]
 class CustomEditorPageRoute
-    extends _i13.PageRouteInfo<CustomEditorPageRouteArgs> {
+    extends _i15.PageRouteInfo<CustomEditorPageRouteArgs> {
   CustomEditorPageRoute({
-    _i14.Key? key,
+    _i16.Key? key,
     required String appbarTitle,
     String? id,
     bool event = false,
     String imagePath = '',
     bool linkExist = false,
-    List<_i13.PageRouteInfo>? children,
+    List<_i15.PageRouteInfo>? children,
   }) : super(
           CustomEditorPageRoute.name,
           args: CustomEditorPageRouteArgs(
@@ -292,8 +316,8 @@ class CustomEditorPageRoute
 
   static const String name = 'CustomEditorPageRoute';
 
-  static const _i13.PageInfo<CustomEditorPageRouteArgs> page =
-      _i13.PageInfo<CustomEditorPageRouteArgs>(name);
+  static const _i15.PageInfo<CustomEditorPageRouteArgs> page =
+      _i15.PageInfo<CustomEditorPageRouteArgs>(name);
 }
 
 class CustomEditorPageRouteArgs {
@@ -306,7 +330,7 @@ class CustomEditorPageRouteArgs {
     this.linkExist = false,
   });
 
-  final _i14.Key? key;
+  final _i16.Key? key;
 
   final String appbarTitle;
 
@@ -326,8 +350,8 @@ class CustomEditorPageRouteArgs {
 
 /// generated route for
 /// [_i6.DashboardPage]
-class DashboardPageRoute extends _i13.PageRouteInfo<void> {
-  const DashboardPageRoute({List<_i13.PageRouteInfo>? children})
+class DashboardPageRoute extends _i15.PageRouteInfo<void> {
+  const DashboardPageRoute({List<_i15.PageRouteInfo>? children})
       : super(
           DashboardPageRoute.name,
           initialChildren: children,
@@ -335,13 +359,51 @@ class DashboardPageRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'DashboardPageRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i15.PageInfo<void> page = _i15.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i7.EventPage]
-class EventPageRoute extends _i13.PageRouteInfo<void> {
-  const EventPageRoute({List<_i13.PageRouteInfo>? children})
+/// [_i7.EventDetail]
+class EventDetailRoute extends _i15.PageRouteInfo<EventDetailRouteArgs> {
+  EventDetailRoute({
+    _i16.Key? key,
+    String? id,
+    List<_i15.PageRouteInfo>? children,
+  }) : super(
+          EventDetailRoute.name,
+          args: EventDetailRouteArgs(
+            key: key,
+            id: id,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'EventDetailRoute';
+
+  static const _i15.PageInfo<EventDetailRouteArgs> page =
+      _i15.PageInfo<EventDetailRouteArgs>(name);
+}
+
+class EventDetailRouteArgs {
+  const EventDetailRouteArgs({
+    this.key,
+    this.id,
+  });
+
+  final _i16.Key? key;
+
+  final String? id;
+
+  @override
+  String toString() {
+    return 'EventDetailRouteArgs{key: $key, id: $id}';
+  }
+}
+
+/// generated route for
+/// [_i8.EventPage]
+class EventPageRoute extends _i15.PageRouteInfo<void> {
+  const EventPageRoute({List<_i15.PageRouteInfo>? children})
       : super(
           EventPageRoute.name,
           initialChildren: children,
@@ -349,15 +411,15 @@ class EventPageRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'EventPageRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i15.PageInfo<void> page = _i15.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i8.HomeScreen]
-class HomeScreenRoute extends _i13.PageRouteInfo<HomeScreenRouteArgs> {
+/// [_i9.HomeScreen]
+class HomeScreenRoute extends _i15.PageRouteInfo<HomeScreenRouteArgs> {
   HomeScreenRoute({
-    _i14.Key? key,
-    List<_i13.PageRouteInfo>? children,
+    _i16.Key? key,
+    List<_i15.PageRouteInfo>? children,
   }) : super(
           HomeScreenRoute.name,
           args: HomeScreenRouteArgs(key: key),
@@ -366,14 +428,14 @@ class HomeScreenRoute extends _i13.PageRouteInfo<HomeScreenRouteArgs> {
 
   static const String name = 'HomeScreenRoute';
 
-  static const _i13.PageInfo<HomeScreenRouteArgs> page =
-      _i13.PageInfo<HomeScreenRouteArgs>(name);
+  static const _i15.PageInfo<HomeScreenRouteArgs> page =
+      _i15.PageInfo<HomeScreenRouteArgs>(name);
 }
 
 class HomeScreenRouteArgs {
   const HomeScreenRouteArgs({this.key});
 
-  final _i14.Key? key;
+  final _i16.Key? key;
 
   @override
   String toString() {
@@ -382,9 +444,47 @@ class HomeScreenRouteArgs {
 }
 
 /// generated route for
-/// [_i9.SpeakerPage]
-class SpeakerPageRoute extends _i13.PageRouteInfo<void> {
-  const SpeakerPageRoute({List<_i13.PageRouteInfo>? children})
+/// [_i10.SpeakerDetail]
+class SpeakerDetailRoute extends _i15.PageRouteInfo<SpeakerDetailRouteArgs> {
+  SpeakerDetailRoute({
+    _i16.Key? key,
+    String? id,
+    List<_i15.PageRouteInfo>? children,
+  }) : super(
+          SpeakerDetailRoute.name,
+          args: SpeakerDetailRouteArgs(
+            key: key,
+            id: id,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'SpeakerDetailRoute';
+
+  static const _i15.PageInfo<SpeakerDetailRouteArgs> page =
+      _i15.PageInfo<SpeakerDetailRouteArgs>(name);
+}
+
+class SpeakerDetailRouteArgs {
+  const SpeakerDetailRouteArgs({
+    this.key,
+    this.id,
+  });
+
+  final _i16.Key? key;
+
+  final String? id;
+
+  @override
+  String toString() {
+    return 'SpeakerDetailRouteArgs{key: $key, id: $id}';
+  }
+}
+
+/// generated route for
+/// [_i11.SpeakerPage]
+class SpeakerPageRoute extends _i15.PageRouteInfo<void> {
+  const SpeakerPageRoute({List<_i15.PageRouteInfo>? children})
       : super(
           SpeakerPageRoute.name,
           initialChildren: children,
@@ -392,14 +492,14 @@ class SpeakerPageRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'SpeakerPageRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i15.PageInfo<void> page = _i15.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i10.UserDetailed]
-class UserDetailedRoute extends _i13.PageRouteInfo<UserDetailedRouteArgs> {
+/// [_i12.UserDetailed]
+class UserDetailedRoute extends _i15.PageRouteInfo<UserDetailedRouteArgs> {
   UserDetailedRoute({
-    _i14.Key? key,
+    _i16.Key? key,
     String? id,
     int? count,
     String? description,
@@ -415,7 +515,7 @@ class UserDetailedRoute extends _i13.PageRouteInfo<UserDetailedRouteArgs> {
     String? twitter,
     String? lin,
     int? type,
-    List<_i13.PageRouteInfo>? children,
+    List<_i15.PageRouteInfo>? children,
   }) : super(
           UserDetailedRoute.name,
           args: UserDetailedRouteArgs(
@@ -441,8 +541,8 @@ class UserDetailedRoute extends _i13.PageRouteInfo<UserDetailedRouteArgs> {
 
   static const String name = 'UserDetailedRoute';
 
-  static const _i13.PageInfo<UserDetailedRouteArgs> page =
-      _i13.PageInfo<UserDetailedRouteArgs>(name);
+  static const _i15.PageInfo<UserDetailedRouteArgs> page =
+      _i15.PageInfo<UserDetailedRouteArgs>(name);
 }
 
 class UserDetailedRouteArgs {
@@ -465,7 +565,7 @@ class UserDetailedRouteArgs {
     this.type,
   });
 
-  final _i14.Key? key;
+  final _i16.Key? key;
 
   final String? id;
 
@@ -504,11 +604,11 @@ class UserDetailedRouteArgs {
 }
 
 /// generated route for
-/// [_i11.UserHomepage]
-class UserHomepageRoute extends _i13.PageRouteInfo<UserHomepageRouteArgs> {
+/// [_i13.UserHomepage]
+class UserHomepageRoute extends _i15.PageRouteInfo<UserHomepageRouteArgs> {
   UserHomepageRoute({
-    _i14.Key? key,
-    List<_i13.PageRouteInfo>? children,
+    _i16.Key? key,
+    List<_i15.PageRouteInfo>? children,
   }) : super(
           UserHomepageRoute.name,
           args: UserHomepageRouteArgs(key: key),
@@ -517,14 +617,14 @@ class UserHomepageRoute extends _i13.PageRouteInfo<UserHomepageRouteArgs> {
 
   static const String name = 'UserHomepageRoute';
 
-  static const _i13.PageInfo<UserHomepageRouteArgs> page =
-      _i13.PageInfo<UserHomepageRouteArgs>(name);
+  static const _i15.PageInfo<UserHomepageRouteArgs> page =
+      _i15.PageInfo<UserHomepageRouteArgs>(name);
 }
 
 class UserHomepageRouteArgs {
   const UserHomepageRouteArgs({this.key});
 
-  final _i14.Key? key;
+  final _i16.Key? key;
 
   @override
   String toString() {
@@ -533,9 +633,9 @@ class UserHomepageRouteArgs {
 }
 
 /// generated route for
-/// [_i12.Wrapper]
-class WrapperRoute extends _i13.PageRouteInfo<void> {
-  const WrapperRoute({List<_i13.PageRouteInfo>? children})
+/// [_i14.Wrapper]
+class WrapperRoute extends _i15.PageRouteInfo<void> {
+  const WrapperRoute({List<_i15.PageRouteInfo>? children})
       : super(
           WrapperRoute.name,
           initialChildren: children,
@@ -543,5 +643,5 @@ class WrapperRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'WrapperRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i15.PageInfo<void> page = _i15.PageInfo<void>(name);
 }

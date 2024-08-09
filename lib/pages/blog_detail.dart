@@ -4,8 +4,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:byrahul/services/blog_service.dart';
 import 'package:byrahul/utils/themes/palette.dart';
 import 'package:byrahul/widgets/custom_text.dart';
-import 'package:byrahul/widgets/editor_toolbar.dart';
-import 'package:byrahul/widgets/textfield_toolbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 
@@ -97,7 +95,9 @@ class BlogDetail extends StatelessWidget {
                   )
                 ]);
               } else {
-                return CircularProgressIndicator();
+                return CircularProgressIndicator(
+                  color: Palette.primary,
+                );
               }
             }));
   }

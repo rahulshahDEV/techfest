@@ -11,13 +11,7 @@ class Tabbar extends StatelessWidget {
   Widget build(BuildContext context) {
     final selectedIndex = context.watch<MainProvider>().selectedIndex;
     final data = context.watch<MainProvider>().konsaPage;
-    List<IconData> myIcons = [
-      Icons.home,
-      Icons.newspaper,
-      Icons.calendar_month,
-      Icons.group,
-      Icons.logout
-    ];
+    List<IconData> myIcons = context.watch<MainProvider>().myIcons;
     return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: GNav(
@@ -30,12 +24,22 @@ class Tabbar extends StatelessWidget {
           haptic: true,
           textStyle: TextStyle(color: Palette.territory_white),
           selectedIndex: selectedIndex,
+          onLongPress: () {
+            print('hello');
+          },
           onTabChange: (index) {
             context.read<MainProvider>().updateTabIndex(index);
           },
           tabs: [
             ...myIcons.map(
               (e) => GButton(
+                onLongpress: () {
+                  // myIcons.add(Icons.logout);
+                  print('hello');
+
+                  // context.read<MainProvider>().addKonsaPage(page: 'login');
+                  print('hello');
+                },
                 icon: e,
                 text: data.elementAt(myIcons.indexOf(e)),
                 gap: 5,

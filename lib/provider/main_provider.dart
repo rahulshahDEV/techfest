@@ -16,11 +16,17 @@ class MainProvider extends ChangeNotifier {
   bool isLoadingEditorPage = false;
   bool isLoadingEventPage = false;
   bool isLoadingSpeeakerPage = false;
+  bool isConnected = true;
   File? imagePreviewPath;
 
   // loading handing for admin ui
   bool isLoadingSubmit = false;
   bool isLoadingSubmitEvent = false;
+
+  void updateInternetStatus({required bool status}) {
+    isConnected = status;
+    notifyListeners();
+  }
 
   void updateLoadingEvent({required bool status}) {
     isLoadingSubmitEvent = status;
@@ -65,7 +71,26 @@ class MainProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<String> konsaPage = ['Home', 'Blogs', 'Event', 'Teams', 'Login'];
+  List<IconData> myIcons = [
+    Icons.home,
+    Icons.newspaper,
+    Icons.calendar_month,
+    Icons.group,
+    Icons.login
+    // Icons.local_activity
+  ];
+
+  void updateIcons({required IconData icon}) {
+    myIcons.add(icon);
+    notifyListeners();
+  }
+
+  List<String> konsaPage = ['Home', 'Blogs', 'Event', 'Teams', 'login'];
+
+  void addKonsaPage({required String page}) {
+    konsaPage.add(page);
+    notifyListeners();
+  }
 
   int selectedIndex = 0;
 
