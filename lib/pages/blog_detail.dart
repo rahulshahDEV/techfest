@@ -95,8 +95,10 @@ class BlogDetail extends StatelessWidget {
                   )
                 ]);
               } else {
-                return CircularProgressIndicator(
-                  color: Palette.primary,
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Palette.primary,
+                  ),
                 );
               }
             }));
