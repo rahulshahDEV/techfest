@@ -47,8 +47,7 @@ class BlogService {
       {String? id,
       required String title,
       required String excrept,
-      required String path,
-      XFile? image,
+      String? image,
       required BuildContext context,
       required dynamic blogdata}) async {
     try {
@@ -60,7 +59,11 @@ class BlogService {
           "excerpt": excrept,
           "content": blogdata,
           "status": "Draft",
-          "image": path
+          if (image != null)
+            "image": await MultipartFile.fromFile(
+              image,
+              contentType: MediaType.parse('image/jpg'),
+            )
         });
 
         await dio.patch(
@@ -71,7 +74,10 @@ class BlogService {
             ));
       }
     } catch (e) {
-      context.showSnackBar("something went wrong !");
+      print(e.toString());
+      if (context.mounted) {
+        context.showSnackBar("something went wrong !");
+      }
     }
   }
 

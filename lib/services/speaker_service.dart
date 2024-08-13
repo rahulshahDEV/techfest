@@ -64,7 +64,7 @@ class SpeakerService {
       required String position,
       required String description,
       required String status,
-      required String imagePath,
+      String? imagePath,
       required String facebook,
       required String twitter,
       required String Linkedin}) async {
@@ -77,7 +77,11 @@ class SpeakerService {
         "facebook": facebook,
         "twitter": twitter,
         "linkedin": Linkedin,
-        "image": imagePath
+        if (imagePath != null)
+          "image": await MultipartFile.fromFile(
+            imagePath,
+            contentType: DioMediaType.parse('image/jpg'),
+          )
       });
       await dio.patch(data: formData, '$URI/speaker/$id');
     } catch (e) {
