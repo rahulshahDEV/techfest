@@ -39,7 +39,9 @@ class BlogService {
         );
       }
     } catch (e) {
-      context.showSnackBar('something wen\'t wrong');
+      if (context.mounted) {
+        context.showSnackBar('something wen\'t wrong');
+      }
     }
   }
 
@@ -66,12 +68,16 @@ class BlogService {
             )
         });
 
-        await dio.patch(
-            data: formData,
-            '$URI/blog/$id',
-            options: Options(
-              headers: {'Content-Type': 'multipart/form-data'},
-            ));
+        await dio
+            .patch(
+                data: formData,
+                '$URI/blog/$id',
+                options: Options(
+                  headers: {'Content-Type': 'multipart/form-data'},
+                ))
+            .then(
+              (value) => context.showSnackBar('succesfully updated blog !'),
+            );
       }
     } catch (e) {
       print(e.toString());
@@ -148,7 +154,7 @@ class BlogService {
         "status": "Published"
       });
       await dio.post('$URI/blog/create', data: formData).then((value) {
-        context.showSnackBar('Succesfully added !', myduration: 2000);
+        context.showSnackBar('Succesfully Blog added !', myduration: 2000);
         context.read<MainProvider>().updateLoadingSubmitStatus(status: false);
       });
     } catch (e) {

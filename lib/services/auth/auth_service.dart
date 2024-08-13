@@ -29,7 +29,7 @@ class Controller {
     try {
       await storage.delete(key: 'jwt_token').then(
         (value) {
-          AutoRouter.of(context).pushNamed('/');
+          AutoRouter.of(context).replaceNamed('/userhome');
         },
       );
     } catch (e) {
