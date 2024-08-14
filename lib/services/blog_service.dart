@@ -31,7 +31,7 @@ class BlogService {
           (value) {
             if (value.statusCode == 200) {
               context.read<MainProvider>().deleteBlogs(index: index);
-              context.showSnackBar('Deleted !');
+              context.showSnackBar(value.data['message'] ?? 'Deleted !');
             } else {
               context.showSnackBar('something wen\'t wrong');
             }
@@ -76,7 +76,8 @@ class BlogService {
                   headers: {'Content-Type': 'multipart/form-data'},
                 ))
             .then(
-              (value) => context.showSnackBar('succesfully updated blog !'),
+              (value) => context.showSnackBar(
+                  value.data['message'] ?? 'succesfully updated blog !'),
             );
       }
     } catch (e) {
@@ -137,30 +138,41 @@ class BlogService {
 
   static Future<void> postBlogData(
       {required String title,
-      required BuildContext context,
+      required BuildContext contexxt,
       required String excrept,
-      XFile? image,
+      required String image,
       required dynamic blogdata}) async {
     try {
-      context.read<MainProvider>().updateLoadingSubmitStatus(status: true);
+      contexxt.read<MainProvider>().updateLoadingSubmitStatus(status: true);
       final formData = FormData.fromMap({
         "title": title,
         "image": await MultipartFile.fromFile(
-          Path!,
+          image,
           contentType: MediaType.parse('image/jpg'),
         ),
         "excerpt": excrept,
         "content": blogdata,
         "status": "Published"
       });
-      await dio.post('$URI/blog/create', data: formData).then((value) {
-        context.showSnackBar('Succesfully Blog added !', myduration: 2000);
-        context.read<MainProvider>().updateLoadingSubmitStatus(status: false);
-      });
+      await dio.post('$URI/blog/create', data: formData).then(
+        (value) {
+          print(value);
+          if (value.data['success']) {
+            contexxt.showSnackBar(value.data['message'], myduration: 2000);
+            contexxt
+                .read<MainProvider>()
+                .updateLoadingSubmitStatus(status: false);
+            // Provider.of<MainProvider>(contexxt, listen: false)
+            //     .updateLoadingSubmitStatus(status: false);
+          }
+        },
+      );
+      ;
     } catch (e) {
-      if (context.mounted) {
-        context.showSnackBar('Error occured !');
-        context.read<MainProvider>().updateLoadingSubmitStatus(status: false);
+      if (contexxt.mounted) {
+        contexxt.showSnackBar('Error occured !');
+        Provider.of<MainProvider>(contexxt, listen: false)
+            .updateLoadingSubmitStatus(status: false);
       }
     }
   }

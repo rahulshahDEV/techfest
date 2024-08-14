@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:byrahul/Extension/extension2.dart';
 import 'package:byrahul/constant.dart';
 import 'package:byrahul/model/event_card.dart';
@@ -59,7 +60,7 @@ class EventService {
       required BuildContext context,
       required String link,
       required String title,
-      required String imagePath,
+      String? eventImagePath,
       required String description,
       required String status}) async {
     try {
@@ -68,14 +69,23 @@ class EventService {
         'link': link,
         'description': description,
         'status': status,
-        'image': imagePath
+        if (eventImagePath != null)
+          'image': await MultipartFile.fromFile(eventImagePath,
+              contentType: DioMediaType.parse('image/jpg'))
       });
 
-      await dio.patch('$URI/event/id',
-          data: formData,
-          options: Options(
-            headers: {'Content-Type': 'multipart/form-data'},
-          ));
+      await dio
+          .patch('$URI/event/$id',
+              data: formData,
+              options: Options(
+                headers: {'Content-Type': 'multipart/form-data'},
+              ))
+          .then(
+        (value) {
+          context.router.maybePop(
+              Provider.of<MainProvider>(context, listen: false).getEvents());
+        },
+      );
     } catch (e) {
       context.showSnackBar("Something wen't Wrong !");
     }
@@ -85,6 +95,7 @@ class EventService {
       {required String link,
       required String title,
       required String description,
+      required String eventImagePath,
       required BuildContext context,
       required String status}) async {
     final FormData formData = FormData.fromMap({
@@ -92,11 +103,11 @@ class EventService {
       'link': link,
       'description': description,
       'status': status,
-      'image': await MultipartFile.fromFile(imagePath!,
+      'image': await MultipartFile.fromFile(eventImagePath,
           contentType: DioMediaType.parse('image/jpg'))
     });
     print(imagePath);
-    if (imagePath != null) {
+    if (eventImagePath != null) {
       try {
         context.read<MainProvider>().updateLoadingEvent(status: true);
 
@@ -122,7 +133,8 @@ class EventService {
       {required String id, required BuildContext context}) async {
     try {
       await dio.delete('$URI/event/$id').then(
-            (value) => context.showSnackBar('Deleted !'),
+            (value) =>
+                context.showSnackBar(value.data['message'] ?? 'Deleted !'),
           );
     } catch (e) {
       print(e.toString());
